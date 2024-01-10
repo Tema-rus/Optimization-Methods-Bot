@@ -1,4 +1,5 @@
 from typing import Dict, List
+import os
 
 import numpy as np
 
@@ -50,7 +51,13 @@ def graphic(target_expression: str, constraints: List[str], user_id: int) -> str
         function_constraints(x1, x2, constraint_parser, const_max, const_min, variables_max_1, variables_min_1,
                              variables_max_2, variables_min_2, i, num_constraints)
 
-    png = f'img/{user_id}.png'
+    folder = 'img'
+    if not os.path.isdir(folder):
+        os.mkdir(folder)
+
+    png = f'{folder}/{user_id}.png'
+
+
     find_maximum(obj_x1, obj_x2, x1, x2, const_max, const_min, variables_max_1, variables_min_1, variables_max_2,
                  variables_min_2, num_constraints, target_parser, path_to_save=png)
 

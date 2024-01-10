@@ -4,7 +4,8 @@ from matplotlib import patheffects
 
 
 def target_function(obj_x1, obj_x2):
-    plt.arrow(x=0, y=0, dx=obj_x1 - 0.25, dy=obj_x2 - 0.25, width=.01, color='black', label='Нормаль вектор')
+    plt.figure()
+    plt.arrow(x=0, y=0, dx=obj_x1 - 0.25, dy=obj_x2 - 0.25, width=.05, color='black', label='Нормаль вектор')
 
 
 def function_constraints(x1, x2, constraint_parser, const_max, const_min, variables_max_1, variables_min_1,
@@ -88,14 +89,15 @@ def find_maximum(obj_x1, obj_x2, x1, x2, const_max, const_min, variables_max_1, 
                 maxima.append(maxim)
             for k in range(len(maxima)):
                 if max(maxima) == maxima[k]:
-                    plt.plot(x1_otbor[k], x2_otbor[k], 'o', label=f'max = {max(maxima)}')
+                    plt.plot(x1_otbor[k], x2_otbor[k], 'o',
+                             label=f'max = {max(maxima):.2f}, x1 = {x1[k]:.2f}, x2 = {x2[k]:.2f}')
         if len(x1_otbor) == 0:
             for h in range(len(x1)):
                 maxim = obj_x1 * x1[h] + obj_x2 * x2[h]
                 maxima.append(maxim)
             for k in range(len(maxima)):
                 if max(maxima) == maxima[k]:
-                    plt.plot(x1[k], x2[k], 'o', label=f'max = {max(maxima)}')
+                    plt.plot(x1[k], x2[k], 'o', label=f'max = {max(maxima):.2f}, x1 = {x1[k]:.2f}, x2 = {x2[k]:.2f}')
 
     if target_parser.constant == 'min':
         if len(x1) == 0:
@@ -104,14 +106,15 @@ def find_maximum(obj_x1, obj_x2, x1, x2, const_max, const_min, variables_max_1, 
                 maxima.append(maxim)
             for k in range(len(maxima)):
                 if min(maxima) == maxima[k]:
-                    plt.plot(x1_otbor[k], x2_otbor[k], 'o', label=f'min = {min(maxima)}')
+                    plt.plot(x1_otbor[k], x2_otbor[k], 'o',
+                             label=f'min = {min(maxima):.2f}, x1 = {x1[k]:.2f}, x2 = {x2[k]:.2f}')
         if len(x1_otbor) == 0:
             for h in range(len(x1)):
                 maxim = obj_x1 * x1[h] + obj_x2 * x2[h]
                 maxima.append(maxim)
             for k in range(len(maxima)):
                 if min(maxima) == maxima[k]:
-                    plt.plot(x1[k], x2[k], 'o', label=f'min = {min(maxima)}')
+                    plt.plot(x1[k], x2[k], 'o', label=f'min = {min(maxima):.2f}, x1 = {x1[k]:.2f}, x2 = {x2[k]:.2f}')
     ox = list()
     oy = list()
     if max(const_min) >= max(const_max):
